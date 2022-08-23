@@ -1,0 +1,74 @@
+#+title: Rust Algorithms & Data Structures
+#+AUTHOR: Dang Quang Vu
+#+HTML_HEAD_EXTRA: <meta charset="utf-8">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="static/myStyle.css" />
+#+HTML_HEAD_EXTRA: <script async type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+* What is Algorithm?
+** Ví dụ:
+- Để chuẩn bị 1 món =trứng ráng=, Chúng ta cần thực hiện theo 1 vài bước sau:
+#+begin_src
+1 - Lấy chảo
+2 - Lấy dầu ăn
+  a - Bạn có dầu ăn không?
+    i - nếu có thì bỏ nó vào chảo.
+    ii - nếu không thì chúng ta có thể đi mua.
+       1. nếu có thể đi mua -> đi ra ngoài và tới siêu thị mua.
+       2. nếu không -> huỷ không nấu nữa -> đặt grab ăn.
+3 - bật bếp.
+#+end_src
+
+- Ở ví dụ trên chúng ta đang giải quyết 1 vấn đề qua các bước được lên kế hoạch
+  sẵn để hoàn thiện việc trứng ráng. Chúng ta thực hiện từng bước step-by-step
+  để giải quyết vấn đề.
+
+#+begin_src
+Vậy một algorithms là các hướng dẫn rõ ràng từng bước để giải quyết một bài toán hay một vấn đề nhất định.
+#+end_src
+- 2 Tiêu chí để đánh giá 1 algorithms:
+  + Correctness : Thuật toán có đưa ra hướng giải quyết vấn đề trong một vài
+    bước hữu hạn hay không?
+  + Efficiency : Cần bao nhiêu tài nguyên bộ nhớ để thực thi? Có tôi ưu nhất hay không?
+
+** Why the analysis of Algorithms?
+- Tại sao chúng ta lại phải phân tích thuật toán?
+- Ví dụ như để đi từ City "HCM" tới "HN", sẽ có rất nhiều cách để di chuyển dữ 2
+  địa điểm. có thể bằng xe máy, xe khách, xe oto, hay máy bay, tàu thậm chí là
+  bằng xe đạp hoặc đi bộ.
+- Tuỳ vào kinh phí bạn có và sự tiện lợi bạn sẽ chọn phương tiện di chuyển phù
+  hợp.
+- Tương tự như thế, với khoá học máy tính thì rất nhiều những thuật toán có thể
+  giải quyết một vấn đề ( insertion sort, selection sort, quick sort,...etc ).
+- Phân tích thuật toán giúp chúng ta lựa chọn ra phương thức phù hợp nhất để
+  giải quyết vấn đề giúp tối ưu hoá tài nguyên của máy tính để tăng hiệu xuất
+  của ứng dụng.
+** What is running time analysis?
+- Running Time Analysis là quá trình xác định thời gian xỷ lý tăng lên như thế
+  nào khi quy mộ của dữ liệu hoặc quy mô của vấn đề tăng lên.
+- Dữ liệu đầu vào có thể có nhiều loại khác nhau:
+  + Size of an array
+  + Polynomial degree - Bậc đa thức
+  + Number of elements is a matrix
+  + Number of bits in the binary representation of the input
+** Used rates of growth to compare algorithms
+
+| Time Complexity | Name               | Example                                              |
+|-----------------+--------------------+------------------------------------------------------|
+| 1               | Constant           | Adding an element to the front of a linked list      |
+| log n           | Logarithmic        | Finding an element in a sorted array                 |
+| n               | Linear             | Finding an element in a unsorted array               |
+| nlog n          | Linear Logarithmic | Sorting n items by 'divide-and-conquer' - Merge sort |
+| n^2             | Quadratic          |                                                      |
+| n^3             | Cubic              |                                                      |
+| 2^n             | Exponential        |                                                      |
+|-----------------+--------------------+------------------------------------------------------|
+** Big-O Notaion
+- ký hiệu O này có nghĩa là =tight upper bound= của một function.
+- Hay đơn giản O được định nghĩa là đo lường tính hiệu của của một thuật lớn khi
+  giới hạn dữ liệu lên tới rất lớn.
+f(n) = O(g(n))
+- Với g(n) có ý nghĩa là giá trị lớn nhất của n. khi n tăng tới =upper bound= thì
+  f(n) sắp sĩ bằng g(n)
+- Ví dụ:
+f(n) = n^4 + 100n^2 + 10n + 50
+- với vị dụ trên thì g(n) là n^4,
