@@ -66,9 +66,13 @@ Vậy một algorithms là các hướng dẫn rõ ràng từng bước để gi
 - ký hiệu O này có nghĩa là =tight upper bound= của một function.
 - Hay đơn giản O được định nghĩa là đo lường tính hiệu của của một thuật lớn khi
   giới hạn dữ liệu lên tới rất lớn.
+#+begin_src latex
 f(n) = O(g(n))
+#+end_src
 - Với g(n) có ý nghĩa là giá trị lớn nhất của n. khi n tăng tới =upper bound= thì
   f(n) sắp sĩ bằng g(n)
 - Ví dụ:
+  #+begin_src latex
 f(n) = n^4 + 100n^2 + 10n + 50
+  #+end_src
 - với vị dụ trên thì g(n) là n^4,
