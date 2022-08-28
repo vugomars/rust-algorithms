@@ -1,7 +1,6 @@
-:PROPERTIES:
-:ID:       de1c23fa-94b5-4957-91f7-99c229c03a85
-:END:
-#+title: Algorithms A - Z - Rust
+#+TITLE: Algorithms & Data Structure - Rust
+#+AUTHOR: DANG QUANG VU
+
 
 * What is Big O Notation
 ** Why?
@@ -10,21 +9,22 @@
 - Bất kể bạn làm việc ở công ty nào, bạn code về gì, thậm chi nếu bạn viết code
   trong 10 năm nữa đây vẫn sẽ là một khái niệm tồn tại trong một thời gian rất
   dài nữa.
-- Big O là một kiến thức cực kỳ quang trọng, nó sẽ giúp bạn trở thành một Lập
+- =BigO= là một kiến thức cực kỳ quang trọng, nó sẽ giúp bạn trở thành một Lập
   trình viên tốt hơn, một engineer tốt hơn.
 - Hầu hết các công ty lớn về công ty đều sẽ rất quang tâm tới kiến thức nền
   tảng này, bạn sẽ khó có thể vào được vòng phỏng vấn trong mà không hiểu rõ về
   BigO.
 - Vì vậy chúng ta sẽ tìm hiểu rõ về nó ngày =section= đầu tiên.
 
-** What is Big O?
-- Big O là một ký hiệu, Big O là dạng =Asymptotic Analysis= ( phân tích tiểm cận )
+** What is big O?
+- =BigO= là một ký hiệu, =BigO= là dạng =Asymptotic Analysis= ( phân tích tiểm cận )
 - Để trở thành một lập trình viên giỏi bạn thường sẽ giải quyết một vấn đề một
   cách tối ưu nhất, vấn đề lớn nhất đó là nó được giải quyết tốt nhứ thế nào!
-- Đây là lúc BigO Sẽ giúp chúng ta, nó cho phép to biết ta giải quyết vấn đề tốt
+- Đây là lúc =BigO= Sẽ giúp chúng ta, nó cho phép to biết ta giải quyết vấn đề tốt
   như thế nào. Chúng ta sẽ cùng tìm hiểu điều này có ý nghĩa là gì trong phần này.
-- Chúng ta tìm hiểu BigO ngay đầu tiên vì trong toàn bộ khoá học bạn sẽ thấy O
-  xuất hiện rất nhiều.
+- Chúng ta tìm hiểu =BigO= ngay đầu tiên vì trong toàn bộ khoá học bạn sẽ thấy
+  =BigO= xuất hiện rất nhiều.
+
 ** What is Good Code?
 - Good code là gì?
 * How To Solve Coding Problems
@@ -45,7 +45,6 @@
 ** Hash Tables
 *** Introductions
 - HashTable Animation
-https://www.cs.usfca.edu/~galles/visualization/OpenHash.html
 *** Hash Function
 *** Hash Collisions
 *** Exercise implement a Hash Table
