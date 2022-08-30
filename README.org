@@ -1,7 +1,6 @@
 #+TITLE: Algorithms & Data Structure - Rust
 #+AUTHOR: DANG QUANG VU
 
-
 * What is Big O Notation
 ** Why?
 - Đây là phần đâu tiên cũng là phần cơ bản nhất, nhưng đối với Vũ đây là phần
@@ -26,25 +25,174 @@
   =BigO= xuất hiện rất nhiều.
 
 ** What is Good Code?
-- Good code là gì?
-* How To Solve Coding Problems
-** Solve Google Interview Problem
+- Như thế nào được xem là một good code?
+  + Readable
+  + Scalable (Big O)
+    - BigO cho phép chúng ta đo lường được về khả năng scalable của code.
+- Chúng ta sẽ nói nhiều hơn về Readable trong 1 chương khác, trong phần này
+  chúng ta sẽ tập trung hơn vào scalable và BigO.
+- Để nấu một cái bánh pizza chúng ta sẽ cần 3 giai đoạn:
+  + Mở và đọc công thức nấu pizza.
+  + Sử dụng công thức đó trong nhà bếp để nấu.
+  + Và sản phẩm tạo ra là 1 cái Pizza Hút.
+- Lý do tại sao có những tiệm pizza bán chạy, còn tiệm thì ế chổng mông thì đó
+  phần lớn là do công thức nấu.
+- Máy tính cũng hoạt động với cách tương tự như thế, Công thức chính là mã code
+  của chúng ta, chúng ta sẽ cung cấp cho máy tính một hướng dẫn và máy tính sẽ
+  hoạt động theo hướng dẫn mà chúng ta đã cung cấp.
+- Sẽ có rất nhiều cách để có thể nấu được 1 cái bánh pizza, nhưng vấn đề là cách
+  nào hiệu quả nhất, nhanh, ngon vè đẹp mắt.
+- Vậy BigO là một ký hiệu chúng ta sử dụng để nói về thời gian chạy của một
+  thuật toán, Chúng ta có thể sử dụng nó để so sanh với các thuật toán khác nhau
+  để kiểm tra khả năng phù hợp.
+[[https://i0.wp.com/www.onlycode.in/wp-content/uploads/2021/09/Operations.png?fit=1660%2C932&ssl=1]]
+
+** O(n) - Linear Notation
+[[https://www.101computing.net/wp/wp-content/uploads/Big-O-Notation-Linear-Algorithm.png]]
+#+begin_src rust
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
+
+fn findName(arr: &mut Vec<&str>) -> i32 {
+    for i in arr.iter() {
+        match i {
+            &"Vu" => return 1,
+            _ => return 0,
+        }
+    }
+    3
+}
+
+fn criterion_benchmark(c: &mut Criterion) {
+    let mut arr = black_box(vec![
+        "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Vu",
+    ]);
+    c.bench_function("is sorted", |b| b.iter(|| findName(&mut arr)));
+}
+
+criterion_group!(benches, criterion_benchmark);
+criterion_main!(benches);
+#+end_src
+
+- Vấn đề của O(n) hay còn được biết tới là dạng thuật toán tuyến tính =linear=, vấn đề
+  của O(n) đó là khi số lượng dữ liệu tăng lên =n= bước, thì các bước hoạt động
+  của O(n) cũng tăng n bước. =Element tăng & Operation tăng=
+
+** O(1) - Constant Notation
+[[https://www.101computing.net/wp/wp-content/uploads/Big-O-Notation-Constant-Algorithm.png]]
+
+#+begin_src rust
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
+
+fn constant(arr: &mut Vec<&str>) -> String {
+    arr[0].to_string()
+}
+
+fn criterion_benchmark(c: &mut Criterion) {
+    let mut arr = black_box(vec![
+        "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+    ]);
+    c.bench_function("is sorted", |b| b.iter(|| constant(&mut arr)));
+}
+
+criterion_group!(benches, criterion_benchmark);
+criterion_main!(benches);
+#+end_src
+
+** O(n^2) - Polynomial Notation
+[[https://www.101computing.net/wp/wp-content/uploads/Big-O-Notation-Polynomial-Algorithm.png]]
+
+#+begin_src rust
+fn main() {
+    let vec = vec![1, 2, 3, 4, 5, 6];
+
+    for i in vec.iter() {
+        for j in vec.iter() {
+            println!("i: {}, j: {}", i, j);
+        }
+    }
+}
+#+end_src
+** O(log n) - Logarithmic Notation
+[[https://www.101computing.net/wp/wp-content/uploads/Big-O-Notation-Logarithmic-Algorithm.png]]
+[[https://www.101computing.net/wp/wp-content/uploads/binary-search-algorithm.png]]
+** Big-O Calculate
+#+begin_src rust
+fn another() -> i32 {
+    return 1;
+}
+
+fn main() {
+    let mut a = 10; // O(1)
+    a = 20 + 5; // O(1)
+    let n = vec![
+        1, 2, 3, 4, 124, 12, 412, 125, 12, 5, 125, 12, 1, 3, 12351, 5, 1,
+    ];
+
+    for i in n.iter() {
+        another(); // O(n)
+        let _i = i + 5; // O(n)
+    }
+}
+#+end_src
+
+- Big-O = O(2 + 2n)
+
 * Data Structures
 ** What is Data Structures
 *** What is?
+- Data Structure là một collection of values =tập hợp các giá trị=, các values này
+  có thể có sự liên hệ với nhau và chúng có thể có các function được áp dụng lên
+  chúng.
+- Mội Data structure đều tốt và thường chuyên biệt để sử lý một vấn đề của riêng
+  nó.
+- Data structure giống như các đồ vật trong nhà bạn (tủ lạnh, balo, tủ sách, tủ
+  đồ,...), Mỗi đồ vật đó đều có hữu ích cho việc của riêng nó, bạn không "nên"
+  lấy tủ đồ để cất đồ ăn của tủ lạnh được ^^!.
+[[https://en.wikipedia.org/wiki/List_of_data_structures][List of Data Structures]]
+
+- Bitcoin về cơ bản thì nó cũng là một dạng data structure, một cách để lưu trữ
+  thông tin.
+- Vì vậy trong thế giới lập trình thì chúng ta có thể lưu trữ những thứ như,
+  number, string, array vào trong data structure.
+- *Vậy làm thế nào để tạo ra một Data Structures.*
+- *Làm thế nào để sử dụng nó?*
 *** How Computer Store Data?
-*** Data Structures khác với Ngôn ngữ lập trình
-*** Operations on Data Structures
-** Array/Vec/String
-*** Static & Dynamic
-*** Implementation a Vector/Array
-*** Exercise
-***** Reverse A String
-***** Merge sorted Vector
-*** Question Interview
+- Để có thể hiểu rõ được Data Structure thì chúng ta sẽ đi tìm hiểu về cách máy
+  tính lưu trữ dữ liệu.
+- Để máy tính có thể chạy nó cần phải theo dõi những thứ như variables, number,
+  string, vector, array,... Những variables này được gọi là RAM (Random access
+  memory).
+- Storage lữu trữ các dữ liệu như tệp tin, document, video. Dữ liệu trên Storage
+  là bộ nhớ vĩnh viễn. Vì vậy khi máy tính của bạn tắt đi thì chúng vẫn ở đó.
+  Còn dữ liệu trong RAM sẽ bị mất đi khi bạn tắt máy tính.
+- Vậy tại sao chúng ta ko lưu hết trên storage nhỉ?
+  + Vấn đề là lưu trữ trên storage thì vấn đề truy vấn dữ liệu sẽ bị chậm.
+  + Máy tính được điều hành bởi CPU, bạn có thể nghĩ CPU giống như một công nhân
+    nhỏ thực hiện tất cả phép tính mà chúng ta cần, nó thực hiện hầu hết các
+    công việc bên trong máy tính.
+  + Và CPU cần truy cập vào RAM và storage, nhưng nó truy cập và lấy dữ liệu từ
+    RAM nhanh hơn rất nhiều so với storage.
+
+| CPU |  (Cache) | -> | RAM | Address      |
+|-----+----------+----+-----+--------------|
+|     | 00000001 |    |     | 0 - 00000001 |
+|     | 00000010 |    |     | 1 - 00000010 |
+|     | 00000011 |    |     | 2 - 00000011 |
+|     | 00000100 |    |     | 3 - 00000101 |
+|-----+----------+----+-----+--------------|
+
+** String
+*** Reverse A String
+#+begin_src rust
+pub fn reverse(text: &str) -> String {
+    text.chars().rev().collect()
+}
+#+end_src
 ** Hash Tables
 *** Introductions
-- HashTable Animation
 *** Hash Function
 *** Hash Collisions
 *** Exercise implement a Hash Table
