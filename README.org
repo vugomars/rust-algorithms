@@ -184,6 +184,8 @@ fn main() {
 |     | 00000100 |    |     | 3 - 00000101 |
 |-----+----------+----+-----+--------------|
 
+*** Classification of Data Structures
+[[https://media.geeksforgeeks.org/wp-content/uploads/20220520182504/ClassificationofDataStructure-660x347.jpg]]
 ** String
 *** Reverse A String
 #+begin_src rust
