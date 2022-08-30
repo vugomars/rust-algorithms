@@ -193,6 +193,20 @@ pub fn reverse(text: &str) -> String {
     text.chars().rev().collect()
 }
 #+end_src
+*** Manacher
+- Tìm Longest Palindrome trong 1 chuỗi.
+  + Worst-case: Time Complexity is O(n)
+  + Worst-case: Space Complexity is O(n)
+*** Rabin Karp
+- Phương pháp sử dụng Hashing để tìm kết quả khớp với String mẫu trong văn bản.
+*** Z-Algorithm
+- Phương pháp tìm kiếm vị trí mà String A khớp với String B trong 1 đoạn text.
+  z-algorithm có input là 1 string và output là một array z.
+*** Knuth Moris Pratt(KMP)
+*** Aho-Corakick Algorithm
+*** BWT Algorithm ( Burrows-Wheeler transform )
+*** Hamming Distance
+
 ** Hash Tables
 *** Introductions
 *** Hash Function
