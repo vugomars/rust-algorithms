@@ -1,16 +1,24 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
-fn fibonacci(n: u64) -> u64 {
-    match n {
-        0 => 1,
-        1 => 1,
-        n => fibonacci(n - 1) + fibonacci(n - 2),
-    }
+fn constant(arr: &mut Vec<&str>) -> String {
+    arr[0].to_string()
 }
 
 fn criterion_benchmark(c: &mut Criterion) {
-    let a = 30;
-    c.bench_function("testing benchmark", |b| b.iter(|| fibonacci(black_box(a))));
+    let mut arr = black_box(vec![
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+        "Vu", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1", "Ok1",
+    ]);
+    c.bench_function("constant test", |b| b.iter(|| constant(&mut arr)));
 }
 
 criterion_group!(benches, criterion_benchmark);
