@@ -1,0 +1,15 @@
+#+TITLE: Sorting Algorithm Rust
+#+AUTHOR: Dang Quang Vu
+#+DESCRIPTION:
+
+* Bubble sort
+[[https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif?20131109191607]]
+** Pseudo
+- khởi tạo vòng lặp.
+  + Kiểm tra phần từ 1 và 2
+    - nếu 1 > 2 thì swap 2 phần tử.
+    - nếu 1 < 2 thì tiếp tiếp tục sang phần tử 2 và 3
+    - cuối vòng lặp đầu tiên sẽ nhận được phần tử lớn nhất cuối vec.
+  + Thực hiện lại vòng lặp
+  + Thực hiện điều này với (số phần từ - 1) lần.
+  + Bạn sẽ nhận được sort list.
