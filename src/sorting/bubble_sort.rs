@@ -32,11 +32,14 @@ fn bubble_sort_sol2<T: Ord>(arr: &mut [T]) { // n^2
 
 #[cfg(test)]
 mod tests {
+    use super::super::is_sorted;
+
     #[test]
     fn test_bubble_sort() {
         use super::*;
         let mut arr = [5,3,2,8,1,4,7,6,9];
         bubble_sort_sol2(&mut arr);
-        assert_eq!(arr, [1,2,3,4,5,6,7,8,9]);
+        assert!(is_sorted(&arr));
+
     }
 }
